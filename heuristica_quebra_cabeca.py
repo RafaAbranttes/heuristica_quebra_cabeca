@@ -78,7 +78,7 @@ def expande(s): #expande os estados
     
     return list
 
-def custo(s,valor_heuristica, valor_heuristica_livro):
+def custo(s,valor_heuristica, valor_heuristica_livro): #o custo é cada vez que se move para um lugar com adição de 1 unidade
     s.custo_heuristica[1] = valor_heuristica
     s.custo_heuristica[0] = s.custo_heuristica[0] + 1
     s.custo_heuristica[2] = valor_heuristica_livro
@@ -221,7 +221,7 @@ def goal2(s):
     return True
 
 
-def show_path(s):
+def show_path(s): #mostra a matriz
     if s == None:
         return
     '''show_path(s.parent)'''
@@ -239,7 +239,7 @@ def show_path(s):
     print("-----------")
 
 
-def enqueue(s):
+def enqueue(s): #empilhar
     global queue
     queue.append(s)
 
@@ -251,7 +251,8 @@ def dequeue():
     return ret
 
 
-def heuristica(s):
+def heuristica(s): #heuristica criada: divisão entre tres ou quatro matrizes menores e soma
+                    # logo após a soma da matriz e subtraida pela soma da matriz objetivo do mesmo tamanho
     if s == None:
         return
     matriz_objetivo = estado_objetivo(len(s.matriz))
@@ -326,7 +327,7 @@ def heuristica(s):
     return (calculo1Fin + calculo2Fin + calculo3Fin + calculo4Fin)
 
 
-def heuristicaLivro(s):
+def heuristicaLivro(s): #utilizando distancia de manhattan
     if s == None:
         return
     matriz_objeitvo = estado_objetivo(len(s.matriz))
